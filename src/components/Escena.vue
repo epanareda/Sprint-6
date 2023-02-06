@@ -14,5 +14,13 @@ export default {
 </script>
 
 <style scoped>
+    p {
+        padding: 1rem 0;
+        margin: 1rem;
 
+        text-align: center;
+
+        border: 3px solid black;
+        border-radius: 500px;
+    }
 </style>
