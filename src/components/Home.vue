@@ -20,7 +20,7 @@
 <script>
 import Escena from './Escena.vue';
 import Botons from './Botons.vue';
-import data from "./../assets/json/data.json";
+import {data} from "./../assets/data/data.js";
 
 // console.log(data);
 
@@ -43,7 +43,7 @@ export default {
         },
 
         nextScene() {
-            this.currentSentence === 3 ? this.currentSentence : this.currentSentence++;
+            this.currentSentence === (this.sentences.length - 1) ? this.currentSentence : this.currentSentence++;
         }
     }
 };

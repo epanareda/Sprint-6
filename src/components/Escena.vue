@@ -1,27 +1,23 @@
 <template>
     <div>
-        <p v-for="(item, index) in items" :key="index" :class="{active: index===objItems[sentence]}">
-            {{ item }}
+        <p v-for="(item, index) in items" :key="index" :class="{active: index===sentence, inactive: index!==sentence}">
+            {{ item.txt }}
         </p>
+        <!-- Here I had some issues getting the image by binding the src attribute. Checking on the internet, I saw this solution that works perfectly. -->
+        <img :src="require(`./../assets/images/${this.items[this.sentence].img}.jpg`)" alt="background image">
     </div>
 </template>
 
 <script>
 export default {
     name: "Escena",
-    props: ["items", "sentence"],
-    data() {
-        return {
-            // Becasue I used a json file and not an array, I must define an array with the index of the object to evaluate the "currentSentence" and add the class "active".
-            objItems: Object.keys(this.items)
-        }
-    }
+    props: ["items", "sentence"]
 };
 </script>
 
 <style scoped>
     p {
-        padding: 1rem 0;
+        padding: 1rem;
         margin: 1rem;
 
         text-align: center;
@@ -32,5 +28,19 @@ export default {
 
     .active {
         background-color: rgb(251, 182, 174);
+    }
+
+    .inactive {
+        background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        /* This size works and it's responisve, even though not always looks its best. */
+        width: 100%;
+        height: 100%;
     }
 </style>
