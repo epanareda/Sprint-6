@@ -1,15 +1,16 @@
 <template>
     <div>
-        <p>
-            El nostre heroi estava surant per l'espai sideral quan a la llunyania va albirar una nau espacial
+        <p v-for="(item, index) in items" :key="index">
+            {{ item }}
         </p>
     </div>
 </template>
 
 <script>
 export default {
-    name: "Escena"
-}
+    name: "Escena",
+    props: ["items"]
+};
 </script>
 
 <style scoped>
